@@ -1,2 +1,1 @@
 # spinca3
-Proba
