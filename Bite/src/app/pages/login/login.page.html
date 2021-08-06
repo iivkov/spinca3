@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-img src="/assets/images/logo.png" class="logo"></ion-img>
+  
+  <ion-item>
+    <ion-label position="floating">Username</ion-label>
+    <ion-input type="text" [(ngModel)]="username"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+
+  <ion-button color="success" (click)="loginClick()">LOGIN</ion-button> 
+
+  <ion-icon [ngClass]="{'active' : userService.logiran}" name="wifi-outline"></ion-icon>
+
+</ion-content>

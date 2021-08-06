@@ -1,0 +1,7 @@
+{
+  "name": "Bite",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
