@@ -49,4 +49,26 @@ export class UserService {
       console.log("Logiran: ", this.logiran);
     });
   }
+
+  register(name: string, username: string, password : string) {
+    console.log("Registracija novog korisnika je uspješna!");
+    console.log(name);
+    console.log(username);
+    console.log(password);
+    
+    let body = {
+      "db": "Food",
+      "queries": [
+          {
+            "query": "spUsersAzur",
+            "params": {
+                "action": "insert",
+                "name": name,
+                "email": username,
+                "password": password
+              }
+          }
+      ]
+  }
+}
 }
