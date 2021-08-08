@@ -70,5 +70,9 @@ export class UserService {
           }
       ]
   }
+
+  this.http.post(this.url, body).subscribe((response: Array<User>) => {
+    console.log(response);
+  });
 }
 }
