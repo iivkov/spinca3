@@ -12,6 +12,8 @@ export class RegisterPage implements OnInit {
   username: string;
   password: string;
 
+  restaurantCheck : boolean = false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit() {
@@ -19,7 +21,7 @@ export class RegisterPage implements OnInit {
 
   registerClick()
   {
-    this.userService.register(this.name, this.username, this.password);
+    this.userService.register(this.name, this.username, this.password, this.restaurantCheck);
   }
 
 }

@@ -50,11 +50,12 @@ export class UserService {
     });
   }
 
-  register(name: string, username: string, password : string) {
+  register(name: string, username: string, password : string, restaurantCheck : boolean) {
     console.log("Registracija novog korisnika je uspješna!");
     console.log(name);
     console.log(username);
     console.log(password);
+    console.log(restaurantCheck);
     
     let body = {
       "db": "Food",
@@ -75,4 +76,5 @@ export class UserService {
     console.log(response);
   });
 }
+
 }
