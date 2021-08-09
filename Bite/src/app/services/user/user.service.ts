@@ -1,22 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { LiteralExpr } from '@angular/compiler';
-
-interface User {
-  name: string;
-  companyId: number;
-  userId: number;
-  companyName: string;
-  isAdmin: boolean;
-}
+import { User } from 'src/app/interfaces/user';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router : Router) { }
 
+  user: User;
   logiran: boolean = false;
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
 
@@ -44,10 +38,16 @@ export class UserService {
     this.http.post(this.url, body).subscribe((response: Array<User>) => {
       // console.log(response);
       if (response.length > 0) {
-        this.logiran = true;
+        // this.logiran = true;
+        this.user = response[0];
+        this.router.navigate(['/web/dashboard'], {replaceUrl : true}); 
       }
       console.log("Logiran: ", this.logiran);
     });
+  }
+
+  logout() {
+    this.user = null;
   }
 
   register(name: string, username: string, password: string, restaurantCheck: boolean, restaurantName: string) {
