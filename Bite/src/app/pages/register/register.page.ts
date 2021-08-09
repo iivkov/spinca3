@@ -13,6 +13,7 @@ export class RegisterPage implements OnInit {
   password: string;
 
   restaurantCheck : boolean = false;
+  restaurantName : string = '';
 
   constructor(private userService: UserService) { }
 
@@ -21,7 +22,7 @@ export class RegisterPage implements OnInit {
 
   registerClick()
   {
-    this.userService.register(this.name, this.username, this.password, this.restaurantCheck);
+    this.userService.register(this.name, this.username, this.password, this.restaurantCheck, this.restaurantName);
   }
 
 }

@@ -28,6 +28,11 @@
     <ion-label>I want to register a restaurant</ion-label>
   </ion-item>
 
+  <ion-item *ngIf="restaurantCheck">
+    <ion-label position="floating">Restaurant name</ion-label>
+    <ion-input type="text" [(ngModel)]="restaurantName"></ion-input>
+  </ion-item>
+
   <ion-item>
     <ion-button color="success" (click)="registerClick()">REGISTER</ion-button>
     <!-- <ion-icon [ngClass]="{'active' : userService.logiran}" name="wifi-outline"></ion-icon> -->
