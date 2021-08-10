@@ -44,7 +44,11 @@ const routes: Routes = [
       {
         path: 'new-dish',
         loadChildren: () => import('./pages/newDish/new-dish/new-dish.module').then(m => m.NewDishPageModule)
-      }
+      },
+      {
+        path: 'orders',
+        loadChildren: () => import('./pages/orders/orders/orders.module').then( m => m.OrdersPageModule)
+      },
     ],
     canActivate: [AuthGuard]
   },
@@ -61,6 +65,11 @@ const routes: Routes = [
     redirectTo: 'login',
     pathMatch: 'full'
   },
+  // {
+  //   path: 'orders',
+  //   loadChildren: () => import('./pages/orders/orders/orders.module').then( m => m.OrdersPageModule)
+  // },
+
 ];
 @NgModule({
   imports: [

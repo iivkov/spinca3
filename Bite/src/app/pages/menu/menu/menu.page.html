@@ -5,4 +5,37 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-searchbar></ion-searchbar>
+
+      <ion-list>
+
+        <ion-card>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="/assets/images/add.png">
+            </ion-avatar>
+            <ion-label>
+              <h3>Jelo 1</h3>
+              <p>Opis jela 1...</p>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+
+        <ion-card>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img src="/assets/images/add.png">
+            </ion-avatar>
+            <ion-label>
+              <h3>Jelo 2</h3>
+              <p>Opis jela 2...</p>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+
+      </ion-list>
+
+      <ion-button color="success" (click)="addNewDish()">Add new dish</ion-button>
+
 </ion-content>
