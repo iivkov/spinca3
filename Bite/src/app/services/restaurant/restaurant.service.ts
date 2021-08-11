@@ -28,7 +28,7 @@ export class RestaurantService {
               tablename: 'allorders'
           },
           {
-            "query" : "supermenu...DZ"
+            "query" : "spmenu...DZ isto dodati tablemenu kao i u prethodnom bodyju"
           }
       ]
   }
@@ -46,5 +46,7 @@ export class RestaurantService {
 }
 
 // .toPromise().then((val : {
-//   allOrders:
+//   allOrders: Array<neki tip></neki>
 // }))
+
+//U DZ u to Promise dodati ispod allOrders dodati allMenus: Array<any>
