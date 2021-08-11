@@ -47,6 +47,5 @@ export class RestaurantService {
 
 // .toPromise().then((val : {
 //   allOrders: Array<neki tip></neki>
-// }))
 
 //U DZ u to Promise dodati ispod allOrders dodati allMenus: Array<any>
