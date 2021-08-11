@@ -9,7 +9,9 @@ import { UserService } from './services/user/user.service';
 })
 export class AppComponent {
   constructor(private menuCtrl: MenuController, private userService: UserService) {
-    this.loggedIn =this.userService.user !=null;
+    this.userService._user.subscribe(val => {
+      this.loggedIn = val != null;
+    })
   }
 
   async openMenu() {

@@ -15,8 +15,8 @@ export class LoginPage implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit() {
-    if(this.username == 'ivan@ivan.hr')
-      this.loginClick();
+    // if(this.username == 'ivan@ivan.hr')
+    //   this.loginClick();
   }
 
   loginClick()

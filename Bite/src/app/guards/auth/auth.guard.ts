@@ -15,10 +15,12 @@ constructor(private userService : UserService, private router: Router) {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if(this.userService.user != null) {
+      //this.userService.user != null
+      if(this.userService._user.getValue()) {
         return true;
       }
+      // this.router.navigate(['/login']);
       this.router.navigate(['/login'], {replaceUrl : true}); 
+      return false;
   }
-  
 }

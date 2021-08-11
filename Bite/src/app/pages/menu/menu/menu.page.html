@@ -6,6 +6,24 @@
 
 <ion-content>
 
+  <ion-segment (ionChange)="segmentChanged($event)" value="monday">
+    <ion-segment-button value="monday">
+      <ion-label>Mon</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="tuesday">
+      <ion-label>Tue</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="wednesday">
+      <ion-label>Wed</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="thursday">
+      <ion-label>Thu</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="friday">
+      <ion-label>Fri</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-searchbar></ion-searchbar>
   <ion-grid>
     <ion-row>

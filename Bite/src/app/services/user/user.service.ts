@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,8 @@ export class UserService {
 
   constructor(private http: HttpClient, private router : Router) { }
 
-  user: User;
+  // user: User;
+  _user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   logiran: boolean = false;
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
 
@@ -39,14 +41,16 @@ export class UserService {
       // console.log(response);
       if (response.length > 0) {
         // this.logiran = true;
-        this.user = response[0];
-        this.router.navigate(['/web/menu'], {replaceUrl : true}); 
+        // this.user = response[0];
+        this._user.next(response[0]);
       }
+        this.router.navigate(['/web/dashboard'], {replaceUrl : true}); 
     });
   }
 
   logout() {
-    this.user = null;
+    // this.user = null;
+    this._user.next(null);
   }
 
   register(name: string, username: string, password: string, restaurantCheck: boolean, restaurantName: string) {
@@ -95,6 +99,10 @@ export class UserService {
 
       }
     });
+  }
+
+  isCompany(){
+    return 5;
   }
 
 }
