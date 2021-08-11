@@ -26,6 +26,9 @@ export class RestaurantService {
                   "restoranid": this.userService.getUserCompany()
               },
               tablename: 'allorders'
+          },
+          {
+            "query" : "supermenu...DZ"
           }
       ]
   }
