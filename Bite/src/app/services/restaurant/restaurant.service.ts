@@ -41,3 +41,7 @@ export class RestaurantService {
   }
 
 }
+
+// .toPromise().then((val : {
+//   allOrders:
+// }))
