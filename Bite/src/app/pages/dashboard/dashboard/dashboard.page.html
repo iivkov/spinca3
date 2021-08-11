@@ -5,7 +5,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-tabs>
+
+  <ion-segment (ionChange)="segmentChanged($event)" value="monday">
+    <ion-segment-button value="monday">
+      <ion-label>Mon</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="tuesday">
+      <ion-label>Tue</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="wednesday">
+      <ion-label>Wed</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="thursday">
+      <ion-label>Thu</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="friday">
+      <ion-label>Fri</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  
+  <!-- <ion-tabs>
     <ion-tab-bar slot="bottom">
 
       <ion-tab-button>
@@ -33,5 +52,38 @@
       </ion-tab-button>
   
     </ion-tab-bar>
-  </ion-tabs>
+  </ion-tabs> -->
+
+  <ion-searchbar></ion-searchbar>
+
+  <ion-list>
+
+    <ion-card>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="/assets/images/add.png">
+        </ion-avatar>
+        <ion-label>
+          <h3>Jelo 1</h3>
+          <p>Opis jela 1...</p>
+        </ion-label>
+        <ion-button color="success" fill="outline" (click)="func()" slot="end">Something</ion-button>
+      </ion-item>
+    </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="/assets/images/add.png">
+        </ion-avatar>
+        <ion-label>
+          <h3>Jelo 2</h3>
+          <p>Opis jela 2...</p>
+        </ion-label>
+        <ion-button color="success" fill="outline" (click)="func()" slot="end">Something</ion-button>
+      </ion-item>
+    </ion-card>
+
+  </ion-list>
+
 </ion-content>
