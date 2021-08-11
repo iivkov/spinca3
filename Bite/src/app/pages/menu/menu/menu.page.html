@@ -7,9 +7,9 @@
 <ion-content>
 
   <ion-searchbar></ion-searchbar>
-
-      <ion-list>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
         <ion-card>
           <ion-item>
             <ion-avatar slot="start">
@@ -22,6 +22,10 @@
           </ion-item>
         </ion-card>
 
+
+      </ion-col>
+      <ion-col>
+
         <ion-card>
           <ion-item>
             <ion-avatar slot="start">
@@ -33,9 +37,16 @@
             </ion-label>
           </ion-item>
         </ion-card>
+      </ion-col>
+      <ion-col>
+        ion-col
+      </ion-col>
 
-      </ion-list>
+    </ion-row>
+  </ion-grid>
 
-      <ion-button color="success" (click)="addNewDish()">Add new dish</ion-button>
+
+
+  <ion-button color="success" (click)="addNewDish()">Add new dish</ion-button>
 
 </ion-content>

@@ -40,9 +40,8 @@ export class UserService {
       if (response.length > 0) {
         // this.logiran = true;
         this.user = response[0];
-        this.router.navigate(['/web/dashboard'], {replaceUrl : true}); 
+        this.router.navigate(['/web/menu'], {replaceUrl : true}); 
       }
-      console.log("Logiran: ", this.logiran);
     });
   }
 
