@@ -8,8 +8,8 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class LoginPage implements OnInit {
 
-  username: string = "ivan@ivan.hr";
-  password: string = "ivan123";
+  username: string = "vedran.prpic1@gmail.com";
+  password: string = "lozinka";
   logiran;
 
   constructor(private userService: UserService) { }

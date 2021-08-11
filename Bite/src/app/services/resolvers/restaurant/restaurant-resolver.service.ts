@@ -11,13 +11,13 @@ export class RestaurantResolverService implements Resolve<boolean> {
 
   constructor(private userService : UserService, private restraurantService : RestaurantService) { }
 
-  resolve(
+  async resolve(
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot
-    ): boolean | Observable<boolean> | Promise<boolean> {
-      if(this.userService.isCompany() !== 2)
+    ): Promise<any> {
+      if(this.userService.getUserCompany() !== 2)
       {
-        return this.restraurantService.initRestaurantForCompanyUser();
+        return await this.restraurantService.initRestaurantForCompanyUser();
       }
       else {
         return this.restraurantService.initRestaurantForCustomerUser();

@@ -5,85 +5,30 @@
 </ion-header>
 
 <ion-content>
-
-  <ion-segment (ionChange)="segmentChanged($event)" value="monday">
-    <ion-segment-button value="monday">
-      <ion-label>Mon</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="tuesday">
-      <ion-label>Tue</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="wednesday">
-      <ion-label>Wed</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="thursday">
-      <ion-label>Thu</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="friday">
-      <ion-label>Fri</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-  
-  <!-- <ion-tabs>
-    <ion-tab-bar slot="bottom">
-
-      <ion-tab-button>
-        <img class="logo_icon" src="/assets/images/logo.png">
-      </ion-tab-button>
-  
-      <ion-tab-button tab="monday">
-        <ion-label>MON</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="tuesday">
-        <ion-label>TUE</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="wednesday">
-        <ion-label>WED</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="thursday">
-        <ion-label>THU</ion-label>
-      </ion-tab-button>
-
-      <ion-tab-button tab="friday">
-        <ion-label>FRI</ion-label>
-      </ion-tab-button>
-  
-    </ion-tab-bar>
-  </ion-tabs> -->
-
-  <ion-searchbar></ion-searchbar>
-
-  <ion-list>
-
-    <ion-card>
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="/assets/images/add.png">
-        </ion-avatar>
-        <ion-label>
-          <h3>Jelo 1</h3>
-          <p>Opis jela 1...</p>
-        </ion-label>
-        <ion-button color="success" fill="outline" (click)="func()" slot="end">Something</ion-button>
-      </ion-item>
-    </ion-card>
-
-    <ion-card>
-      <ion-item>
-        <ion-avatar slot="start">
-          <img src="/assets/images/add.png">
-        </ion-avatar>
-        <ion-label>
-          <h3>Jelo 2</h3>
-          <p>Opis jela 2...</p>
-        </ion-label>
-        <ion-button color="success" fill="outline" (click)="func()" slot="end">Something</ion-button>
-      </ion-item>
-    </ion-card>
-
-  </ion-list>
-
+  <div class="days">
+    <div class="day">
+      <img class="logo" src="assets/logo.png" alt="">
+    </div>
+    <div [ngClass]="{'day' : true, 'active-day' : day == currentDay}" *ngFor="let day of days" color="primary" (click) ="changeDay(day)">
+    <span><h2>{{daysNames[day-1]}}</h2></span>
+  </div>
+</div>
+<div class="menu">
+  <ion-grid style="margin: 0px 50px 50px;">
+    <ion-row>
+      <ion-col style="text-align: center;">
+      <h1>
+        Orders overview
+      </h1>
+    </ion-col>
+    </ion-row>
+  <ion-row>
+    <ion-col size-xl="3" size-lg="6" size-md="6" size-sm="12" *ngFor="let order of getOrdersForDay()">
+      <span>
+        <app-order [order]="order"></app-order>
+      </span>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+</div>
 </ion-content>

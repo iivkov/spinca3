@@ -101,8 +101,12 @@ export class UserService {
     });
   }
 
-  isCompany(){
-    return 5;
+  // isCompany(){
+  //   return 5;
+  // }
+  
+  getUserCompany() {
+    return this._user.getValue().companyId;
   }
 
 }
