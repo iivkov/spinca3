@@ -16,6 +16,25 @@ export class DashboardPage implements OnInit {
   ngOnInit() {
   }
 
+  // orders2 = [
+  //   {
+  //     jelo: 'Rižoto',
+  //     narucitelj: 'Ivan Ivanic',
+  //   },
+  //   {
+  //     jelo: 'Ćevapi',
+  //     narucitelj: 'Petar Petric',
+  //   },
+  //   {
+  //     jelo: 'Škampi',
+  //     narucitelj: 'Ante Antic',
+  //   },
+  //   {
+  //     jelo: 'Punjena paprika',
+  //     narucitelj: 'Stipe Stipic',
+  //   }
+  // ]
+
   orders : Array<Order>=[];
   days = [1, 2, 3, 4, 5];
   daysNames = ['MON', 'TUE', 'WED', 'THU', 'FRI'];

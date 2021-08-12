@@ -15,7 +15,7 @@ export class RestaurantService {
   url : string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
   _orders: BehaviorSubject<Array<Order>> = new BehaviorSubject<Array<Order>>(null);
 
-  initRestaurantForCompanyUser() {
+initRestaurantForCompanyUser() {
   let body = {
       "db": "Food",
       "queries": [
@@ -27,15 +27,21 @@ export class RestaurantService {
               },
               tablename: 'allorders'
           },
-          {
-            "query" : "spmenu...DZ isto dodati tablemenu kao i u prethodnom bodyju"
-          }
+        //   {
+        //     "query": "spMenu",
+        //     "params": {
+        //         "action": "week",
+        //         "companyid": "1"
+        //     },
+        //     tablename: 'allorders'
+        // }
       ]
   }
-  return this.httpClient.post(this.url, body).toPromise().then((val: Array<Order>) => {
-    this._orders.next(val);
-    console.log(val);
-    // return 1;
+  return this.httpClient.post(this.url, body).toPromise().then((val: {
+    allOrders: Array<Order>
+    // allMenus: Array<any>
+  }) => {
+    this._orders.next(val.allOrders);
   })
 }
 
@@ -44,8 +50,3 @@ export class RestaurantService {
   }
 
 }
-
-// .toPromise().then((val : {
-//   allOrders: Array<neki tip></neki>
-
-//U DZ u to Promise dodati ispod allOrders dodati allMenus: Array<any>

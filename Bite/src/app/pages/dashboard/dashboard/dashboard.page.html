@@ -1,34 +1,47 @@
-<ion-header>
+<!-- <ion-header>
   <ion-toolbar>
     <ion-title>dashboard</ion-title>
   </ion-toolbar>
-</ion-header>
+</ion-header> -->
 
 <ion-content>
   <div class="days">
     <div class="day">
-      <img class="logo" src="assets/logo.png" alt="">
+      <img class="logo" src="assets/images/logo_invert.png" alt="">
     </div>
-    <div [ngClass]="{'day' : true, 'active-day' : day == currentDay}" *ngFor="let day of days" color="primary" (click) ="changeDay(day)">
-    <span><h2>{{daysNames[day-1]}}</h2></span>
+    <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary" (click)="changeDay(day)">
+      <span><h2>{{daysNames[day-1]}}</h2></span>
+    </div>
   </div>
-</div>
-<div class="menu">
-  <ion-grid style="margin: 0px 50px 50px;">
-    <ion-row>
-      <ion-col style="text-align: center;">
-      <h1>
-        Orders overview
-      </h1>
-    </ion-col>
-    </ion-row>
-  <ion-row>
-    <ion-col size-xl="3" size-lg="6" size-md="6" size-sm="12" *ngFor="let order of getOrdersForDay()">
-      <span>
-        <app-order [order]="order"></app-order>
-      </span>
-    </ion-col>
-  </ion-row>
-  </ion-grid>
-</div>
+  
+  <div class="menu">
+    <ion-grid style="margin: 0px 50px 50px;">
+      <ion-row>
+        <ion-col style="text-align: center;">
+          <h1>
+            Orders overview
+          </h1>
+        </ion-col>
+      </ion-row>
+      <ion-row >
+        <ion-col  size-xl="3" size-lg="6"  size-md="6" size-sm="12" *ngFor="let order of getOrdersForDay()">
+          <span >
+            <!-- <app-order [order]="order"></app-order> -->
+            <ion-card>
+              <ion-item>
+                <ion-avatar slot="start">
+                  <img src="/assets/images/add.png">
+                </ion-avatar>
+                <ion-label>
+                  <h3>{{order.jelo}}</h3>
+                  <p>{{order.narucitelj}}</p>
+                </ion-label>
+              </ion-item>
+            </ion-card>
+          </span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
 </ion-content>
