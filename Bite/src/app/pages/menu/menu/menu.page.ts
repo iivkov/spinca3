@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/interfaces/order';
+import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,7 +10,7 @@ import { Order } from 'src/app/interfaces/order';
 })
 export class MenuPage implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private restaurantService: RestaurantService) { }
 
   ngOnInit() {
   }
@@ -22,6 +23,12 @@ export class MenuPage implements OnInit {
   currentDay = 1;
   changeDay(day: number) {
     this.currentDay = day;
+  }
+
+  getOrdersForDay() {
+    if(this.orders != null) {
+      return this.orders.filter(o => o.dan == this.daysNamesCRO[this.currentDay -1]);
+    }
   }
 
   addNewDish()

@@ -17,29 +17,34 @@
   <div class="menu">
     <ion-grid style="margin: 0px 50px 50px;">
       <ion-row>
+
         <ion-col style="text-align: center;">
           <h1>
-            Menu
+            Non active meals
+          </h1>
+        </ion-col>
+
+        <ion-col style="text-align: center;">
+          <h1>
+            Current meals
           </h1>
         </ion-col>
       </ion-row>
+      
       <ion-row >
-        <ion-col  size-xl="3" size-lg="6"  size-md="6" size-sm="12">
+
+        <ion-col size-xl="3" size-lg="6"  size-md="6" size-sm="12">
           <span >
-            <!-- <app-order [order]="order"></app-order> -->
-            <ion-card>
-              <ion-item>
-                <ion-avatar slot="start">
-                  <img src="/assets/images/add.png">
-                </ion-avatar>
-                <ion-label>
-                  <h3>hh</h3>
-                  <p>hh</p>
-                </ion-label>
-              </ion-item>
-            </ion-card>
+            <app-order [order]="order"></app-order>
           </span>
         </ion-col>
+
+        <ion-col size-xl="3" size-lg="6"  size-md="6" size-sm="12" *ngFor="let order of getOrdersForDay()">
+          <span >
+            <app-order [order]="order"></app-order>
+          </span>
+        </ion-col>
+
       </ion-row>
     </ion-grid>
   </div>
