@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { User } from 'src/app/interfaces/user';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { StorageService } from '../storage/storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private router : Router) { }
+  constructor(private http: HttpClient, private router : Router, private storageService : StorageService) { }
 
   // user: User;
   _user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
@@ -43,6 +44,7 @@ export class UserService {
         // this.logiran = true;
         // this.user = response[0];
         this._user.next(response[0]);
+        this.storageService.setData("user", response[0]); //STORAGE
       }
         this.router.navigate(['/web/dashboard'], {replaceUrl : true}); 
     });
@@ -51,6 +53,16 @@ export class UserService {
   logout() {
     // this.user = null;
     this._user.next(null);
+    this.storageService.removeData("user");
+  }
+
+  async isLogged(){
+    let user = await this.storageService.getData("user");
+    if(user == null|| user == undefined){
+      return false;
+    }
+    this._user.next(user);
+    return true;
   }
 
   register(name: string, username: string, password: string, restaurantCheck: boolean, restaurantName: string) {

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
+import { StorageService } from './services/storage/storage.service';
 import { UserService } from './services/user/user.service';
 
 @Component({
@@ -8,24 +10,31 @@ import { UserService } from './services/user/user.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private menuCtrl: MenuController, private userService: UserService) {
-    this.userService._user.subscribe(val => {
-      this.loggedIn = val != null;
-    })
-  }
+  constructor(private menuCtrl: MenuController, private userService: UserService, private router : Router, private storageService : StorageService) {
+      this.onInitApp();
+    }
 
-  async openMenu() {
-    await this.menuCtrl.open('first');
-  }
-
-  loggedIn : boolean = false;
+    onInitApp(){
+      if(this.userService.isLogged()){
+        this.router.navigate(['/web/dashboard']);
+      }
+      this.userService._user.subscribe(val => {
+        this.loggedIn = val != null;
+      })
+    }
   
-  closeMenu() {
-    this.menuCtrl.close('first');
+    async openMenu() {
+      await this.menuCtrl.open('first');
+    }
+  
+    loggedIn : boolean = false;
+    
+    closeMenu() {
+      this.menuCtrl.close('first');
+    }
+  
+    logout() {
+      this.userService.logout();
+      this.closeMenu();
+    }
   }
-
-  logout() {
-    this.userService.logout();
-    this.closeMenu();
-  }
-}
