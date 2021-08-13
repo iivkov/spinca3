@@ -10,12 +10,14 @@ import { RestaurantService } from 'src/app/services/restaurant/restaurant.servic
 })
 export class MenuPage implements OnInit {
 
-  constructor(private router: Router, private restaurantService: RestaurantService) { }
+  constructor(private router: Router, private restaurantService: RestaurantService) {
+    this.restaurantService._menus.subscribe(val => {this.menus = val})
+   }
 
   ngOnInit() {
   }
 
-  orders : Array<Order>=[];
+  menus : Array<any>=[];
   days = [1, 2, 3, 4, 5];
   daysNames = ['MON', 'TUE', 'WED', 'THU', 'FRI'];
   daysNamesCRO = ['Ponedjeljak', 'Utorak', 'Srijeda', 'Četvrtak', 'Petak'];
@@ -26,8 +28,8 @@ export class MenuPage implements OnInit {
   }
 
   getOrdersForDay() {
-    if(this.orders != null) {
-      return this.orders.filter(o => o.dan == this.daysNamesCRO[this.currentDay -1]);
+    if(this.menus != null) {
+      return this.menus.filter(o => o.day == this.currentDay);
     }
   }
 

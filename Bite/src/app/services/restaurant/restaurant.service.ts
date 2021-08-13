@@ -26,7 +26,7 @@ initRestaurantForCompanyUser() {
                   "action": "forCompany",
                   "restoranid": this.userService.getUserCompany()
               },
-              tablename: 'allorders'
+              tablename: 'allOrders'
           },
           {
             "query": "spMenu",
@@ -34,13 +34,22 @@ initRestaurantForCompanyUser() {
                 "action": "week",
                 "companyid": "1"
             },
-            tablename: 'allmenus'
-        }
+            tablename: 'allMenus'
+        },
+        {
+          "query": "spDishMenu",
+          "params": {
+              "action": "dish",
+              "companyid": "1"
+          },
+          tablename: 'allDishes'
+      }
       ]
   }
   return this.httpClient.post(this.url, body).toPromise().then((val: {
-    allOrders: Array<Order>
-    allMenus: Array<any>
+    allOrders: Array<Order>,
+    allMenus: Array<any>,
+    allDishes: Array<any>
   }) => {
     this._orders.next(val.allOrders);
     this._menus.next(val.allMenus);
