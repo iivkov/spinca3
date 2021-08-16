@@ -16,7 +16,7 @@ export class UserService {
   _user: BehaviorSubject<User> = new BehaviorSubject<User>(null);
   logiran: boolean = false;
   url: string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
-
+  isMobile : boolean;
 
   login(username: string, password: string) {
     console.log("Logiranje uspjelo...");
@@ -46,7 +46,8 @@ export class UserService {
         this._user.next(response[0]);
         this.storageService.setData("user", response[0]); //STORAGE
       }
-        this.router.navigate(['/web/dashboard'], {replaceUrl : true}); 
+        // this.router.navigate(['/web/dashboard'], {replaceUrl : true}); 
+        this.router.navigate(['/' + (!this.isMobile ? 'web' : 'mobile/tabs') + '/dashboard'], {replaceUrl : true});
     });
   }
 

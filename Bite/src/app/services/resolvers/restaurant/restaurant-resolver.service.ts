@@ -15,12 +15,13 @@ export class RestaurantResolverService implements Resolve<boolean> {
     route: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot
     ): Promise<any> {
-      if(this.userService.getUserCompany() !== 2)
+      // if(this.userService.getUserCompany() !== 2)
+      if(!this.userService.isMobile)
       {
         return await this.restraurantService.initRestaurantForCompanyUser();
       }
-      else {
-        return this.restraurantService.initRestaurantForCustomerUser();
+      else  {
+        return await this.restraurantService.initRestaurantForCustomerUser().toPromise();
       }
   }
 

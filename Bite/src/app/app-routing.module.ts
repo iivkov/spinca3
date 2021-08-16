@@ -64,10 +64,43 @@ const routes: Routes = [
     path: 'register',
     loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
   },
+  
+  {
+    path: 'mobile',
+    children: [
+      // {
+      //   path: 'dashboard',
+      //   loadChildren: () => import('./pages/mobile/dahsboard/dashboard/dashboard.module').then( m => m.DashboardPageModule)
+      // },
+      // {
+      //   path: 'cart',
+      //   loadChildren: () => import('./pages/mobile/cart/cart/cart.module').then( m => m.CartPageModule)
+      // },
+      // {
+      //   path: 'profile',
+      //   loadChildren: () => import('./pages/mobile/profile/profile/profile.module').then( m => m.ProfilePageModule)
+      // },
+      {
+        path: 'tabs',
+        loadChildren: () => import('./pages/mobile/tabs/tabs.module').then( m => m.TabsPageModule)
+      },
+      {
+        path: 'restaurant',
+        loadChildren: () => import('./pages/mobile/restaurant/restaurant.module').then( m => m.RestaurantPageModule)
+      },
+    ],
+    resolve: {
+      restaurant: RestaurantResolverService
+    },
+    canActivate: [AuthGuard],
+    
+  },
   {
     path: '**',
     loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
   }
+
+
   // {
   //   path: 'orders',
   //   loadChildren: () => import('./pages/orders/orders/orders.module').then( m => m.OrdersPageModule)

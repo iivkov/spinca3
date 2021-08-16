@@ -1,8 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Menu } from 'src/app/interfaces/menu';
 import { Order } from 'src/app/interfaces/order';
+import { Restaurant } from 'src/app/interfaces/restaurant';
 import { UserService } from '../user/user.service';
+import { map } from 'rxjs/operators';
+import { MenuDish } from 'src/app/interfaces/menu-dish';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +19,7 @@ export class RestaurantService {
   url : string = "https://jupitermobiletest.jupiter-software.com:30081/jupitermobilex/gen/api/food";
   _orders: BehaviorSubject<Array<Order>> = new BehaviorSubject<Array<Order>>(null);
   _menus: BehaviorSubject<Array<any>> = new BehaviorSubject<Array<any>>(null);
+  _restaurants: BehaviorSubject<Array<Restaurant>> = new BehaviorSubject<Array<Restaurant>>([]);
 
 initRestaurantForCompanyUser() {
   let body = {
@@ -57,7 +62,47 @@ initRestaurantForCompanyUser() {
 }
 
   initRestaurantForCustomerUser() {
-    return true;
+    let body = {
+      "db": "Food",
+      "queries": [
+          {
+            "query": "spCompany",
+            "params": {
+                "@action": "all"
+            },
+              tablename: 'allRestaurants'
+          },
+          {
+            "query": "spMenu",
+            "params": {
+                "action": "week",
+                "companyid": "1"
+            },
+            tablename: 'allMenus'
+        },
+        {
+          "query": "spMenu",
+            "params": {
+                "action": "all"
+            },
+          tablename: 'allMenus'
+      }
+      ]
+    }
+    return this.httpClient.post(this.url, body).pipe(map((val : {
+      allRestaurants : Array<Restaurant>;
+      allMenus: Array<MenuDish>;
+    }) => {
+      if(val.allRestaurants.length >0 ) {
+        const x = val.allRestaurants.map(r => ({
+          companyId: r.companyId,
+          name: r.name,
+          menus: [1, 2, 3, 4, 5].map(d => val.allMenus.filter(m => m.companyId === r.companyId && m.day === d))
+        }));
+        this._restaurants.next(x);  
+      }
+    }));
+
   }
 
   saveNewDish(dish_name: string, dish_description: string, saladCheck: boolean, breadCheck : boolean, soupCheck : boolean){
