@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { DashboardPage } from './dashboard.page';
-import { OrderComponent } from '../../../components/order/order/order.component';
+import { OrderComponent } from '../../../../components/order/order/order.component';
 
 @NgModule({
   imports: [

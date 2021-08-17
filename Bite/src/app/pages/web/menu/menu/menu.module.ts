@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { MenuPageRoutingModule } from './menu-routing.module';
 
 import { MenuPage } from './menu.page';
-import { Order } from '../../../interfaces/order';
-import { OrderComponent } from '../../../components/order/order/order.component';
+import { Order } from '../../../../interfaces/order';
+import { OrderComponent } from '../../../../components/order/order/order.component';
 
 @NgModule({
   imports: [

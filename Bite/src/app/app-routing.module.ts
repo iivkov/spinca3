@@ -4,82 +4,34 @@ import { AuthGuard } from './guards/auth/auth.guard';
 import { RestaurantResolverService } from './services/resolvers/restaurant/restaurant-resolver.service';
 
 const routes: Routes = [
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  // },
-  // {
-  //   path: 'register',
-  //   loadChildren: () => import('./pages/register/register.module').then( m => m.RegisterPageModule)
-  // },
-  // {
-  //   path: 'dashboard',
-  //   loadChildren: () => import('./pages/dashboard/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-  // },
-  // {
-  //   path: 'menu',
-  //   loadChildren: () => import('./pages/menu/menu/menu.module').then( m => m.MenuPageModule)
-  // },
-  // {
-  //   path: 'new-dish',
-  //   loadChildren: () => import('./pages/newDish/new-dish/new-dish.module').then( m => m.NewDishPageModule)
-  // },
-  // {
-  //   path: '**', //VAŽAN JE REDOSLIJED RUTA, OVO NA KRAJ!
-  //   loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
-  // },
-  // canActivate : [AuthGuard]
-
-  //ILI
   {
     path: 'web',
     children: [
       {
         path: 'dashboard',
-        loadChildren: () => import('./pages/dashboard/dashboard/dashboard.module').then(m => m.DashboardPageModule)
+        loadChildren: () => import('./pages/web/dashboard/dashboard/dashboard.module').then(m => m.DashboardPageModule)
       },
       {
         path: 'menu',
-        loadChildren: () => import('./pages/menu/menu/menu.module').then(m => m.MenuPageModule)
+        loadChildren: () => import('./pages/web/menu/menu/menu.module').then(m => m.MenuPageModule)
       },
       {
         path: 'new-dish',
-        loadChildren: () => import('./pages/newDish/new-dish/new-dish.module').then(m => m.NewDishPageModule)
+        loadChildren: () => import('./pages/web/newDish/new-dish/new-dish.module').then(m => m.NewDishPageModule)
       },
-      {
-        path: 'orders',
-        loadChildren: () => import('./pages/orders/orders/orders.module').then( m => m.OrdersPageModule)
-      },
+      // {
+      //   path: 'orders',
+      //   loadChildren: () => import('./pages/orders/orders/orders.module').then( m => m.OrdersPageModule)
+      // },
     ],
-    canActivate: [AuthGuard],
     resolve: {
       restaurant: RestaurantResolverService
     },
+    canActivate: [AuthGuard]
   },
-  {
-    path: 'login',
-    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
-  },
-  {
-    path: 'register',
-    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
-  },
-  
   {
     path: 'mobile',
     children: [
-      // {
-      //   path: 'dashboard',
-      //   loadChildren: () => import('./pages/mobile/dahsboard/dashboard/dashboard.module').then( m => m.DashboardPageModule)
-      // },
-      // {
-      //   path: 'cart',
-      //   loadChildren: () => import('./pages/mobile/cart/cart/cart.module').then( m => m.CartPageModule)
-      // },
-      // {
-      //   path: 'profile',
-      //   loadChildren: () => import('./pages/mobile/profile/profile/profile.module').then( m => m.ProfilePageModule)
-      // },
       {
         path: 'tabs',
         loadChildren: () => import('./pages/mobile/tabs/tabs.module').then( m => m.TabsPageModule)
@@ -94,6 +46,14 @@ const routes: Routes = [
     },
     canActivate: [AuthGuard],
     
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./pages/register/register.module').then(m => m.RegisterPageModule)
   },
   {
     path: '**',
