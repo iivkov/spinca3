@@ -36,4 +36,8 @@ export class DashboardPage implements OnInit {
     this.filteredRestaurants = !query ? [...this.allRestaurants] : this.allRestaurants.filter(r => r.name.toLowerCase().includes(query));
   }
 
+  restaurantSelection(restaurant: Restaurant) {
+    this.restaurantService.restaurantSelection(restaurant)
+  }
+
 }

@@ -1,0 +1,15 @@
+.days {
+    display: inline-block;
+    width: 100%;
+    // height: 60%;
+}
+.day {
+    width: (100%/5);
+    height: 100%;
+    padding: 30px;
+    display: flex;
+}
+.active-day {
+    color:  #1CBA5B;
+    background-color: white;
+}

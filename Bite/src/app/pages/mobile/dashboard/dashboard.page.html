@@ -9,7 +9,7 @@
   <ion-searchbar (ionInput)='search($event)'></ion-searchbar>
 
   <ion-list>
-    <ion-card class='ion-text-center ion-padding' *ngFor="let restaurant of filteredRestaurants" [routerLink]="['/mobile/restaurant']" [queryParams]='{id: restaurant.companyId}' [ngStyle]="{'background-image': restaurant.image}"> {{restaurant.name}}</ion-card>
+    <ion-card class='ion-text-center ion-padding' *ngFor="let restaurant of filteredRestaurants" [routerLink]="['/mobile/restaurant']" [queryParams]='{id: restaurant.companyId}' [ngStyle]="{'background-image': restaurant.image}" (click)="restaurantSelection(restaurant)"> {{restaurant.name}}</ion-card>
   </ion-list>
 
 </ion-content>

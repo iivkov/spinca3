@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Order } from 'src/app/interfaces/order';
+import { Dish } from 'src/app/interfaces/dish';
 import { RestaurantService } from 'src/app/services/restaurant/restaurant.service';
 
 @Component({
@@ -27,7 +27,7 @@ export class MenuPage implements OnInit {
     this.currentDay = day;
   }
 
-  getOrdersForDay() {
+  getDishesForDay() {
     if(this.menus != null) {
       return this.menus.filter(o => o.day == this.currentDay);
     }

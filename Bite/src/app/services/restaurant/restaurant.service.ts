@@ -7,6 +7,7 @@ import { Restaurant } from 'src/app/interfaces/restaurant';
 import { UserService } from '../user/user.service';
 import { map } from 'rxjs/operators';
 import { MenuDish } from 'src/app/interfaces/menu-dish';
+import { Dish } from 'src/app/interfaces/dish';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,9 @@ export class RestaurantService {
   _orders: BehaviorSubject<Array<Order>> = new BehaviorSubject<Array<Order>>(null);
   _menus: BehaviorSubject<Array<any>> = new BehaviorSubject<Array<any>>(null);
   _restaurants: BehaviorSubject<Array<Restaurant>> = new BehaviorSubject<Array<Restaurant>>([]);
+  _dishes: BehaviorSubject<Dish[]> = new BehaviorSubject<Dish[]>(null);
+
+  selectedRestaurant?: Restaurant;
 
 initRestaurantForCompanyUser() {
   let body = {
@@ -53,11 +57,12 @@ initRestaurantForCompanyUser() {
   }
   return this.httpClient.post(this.url, body).toPromise().then((val: {
     allOrders: Array<Order>,
-    allMenus: Array<any>,
-    allDishes: Array<any>
+    allMenus: Array<Menu>,
+    allDishes: Array<Dish>
   }) => {
     this._orders.next(val.allOrders);
     this._menus.next(val.allMenus);
+    this._dishes.next(val.allDishes);
   })
 }
 
@@ -132,6 +137,12 @@ initRestaurantForCompanyUser() {
     }
 
     this.httpClient.post(this.url, body).subscribe();
+  }
+
+  restaurantSelection(restaurant: Restaurant): void {
+    this.selectedRestaurant = restaurant;
+    console.log(this.selectedRestaurant);
+    
   }
 
 }

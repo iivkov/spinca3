@@ -1,9 +1,17 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>restaurant</ion-title>
+    <ion-title>{{selectedRestaurant.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+
+  <div class="days">
+    <div class="day">
+      <div [ngClass]="{'day': true, 'active-day': day == currentDay}" *ngFor="let day of days" color="primary" (click)="changeDay(day)">
+        <span><ion-button>{{daysNames[day-1]}}</ion-button></span>
+      </div>
+    </div>
+  </div>
 
 </ion-content>
